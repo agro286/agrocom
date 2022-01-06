@@ -1,0 +1,27 @@
+version: '3'
+
+volumes:
+  postgres:
+    driver: local
+
+services:
+  agrocom-db:
+    image: postgres:11
+    container_name: agrocom_db
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "mysecretpassword"
+      POSTGRES_DB: "agrocom"
+
+  agrocom-service:
+    build:
+      context: ./agrocom-service
+    depends_on:
+      - agrocom-db
+    ports:
+      - "8082:8080"
+    tty: true
