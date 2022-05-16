@@ -14,13 +14,13 @@ export const Overview: FunctionComponent = () => {
 
     const reloadEntries = useCallback(() => {
         apiObjects.freightController
-            .getAllFreightsUsingGET()
+            .getAllFreights()
             .then(freightsDb => setFreights(freightsDb))
     }, [apiObjects, reloadFlag]);
 
     const deleteItem = (id: number) => {
         apiObjects.freightController
-            .deleteFreightUsingDELETE({id})
+            .deleteFreight({id})
             .then(() => setReloadFlag(Math.random()))
     };
 

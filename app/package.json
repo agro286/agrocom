@@ -36,7 +36,7 @@
     "eject": "react-scripts eject",
     "api": "run-s api:*",
     "api:clean": "rimraf src/api-gen",
-    "api:generate": "openapi-generator generate -i http://localhost:8080/agrocom/v2/api-docs -g typescript-fetch -o src/api-gen --additional-properties=typescriptThreePlus=true"
+    "api:generate": "openapi-generator generate -i http://localhost:8080/agrocom/v3/api-docs -g typescript-fetch -o src/api-gen --additional-properties=typescriptThreePlus=true"
   },
   "eslintConfig": {
     "extends": [

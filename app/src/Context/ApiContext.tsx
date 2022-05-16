@@ -19,7 +19,7 @@ interface ApiObjects {
 export const ApiContextProvider: FunctionComponent = ({children}) => {
     const [activeRequests, setActiveRequests] = useState<number>(0);
     const apiConfiguration = useMemo<Configuration>(() => new Configuration({
-        basePath: `${config.basePath.replace(/\/+$/, '')}`,
+        basePath: `${config.basePath.replace(/\/+$/, '')}/${config.contextPath}`,
         credentials: 'include',
         middleware: [{
             pre: async context => {

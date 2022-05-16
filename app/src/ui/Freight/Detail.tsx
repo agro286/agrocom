@@ -12,7 +12,7 @@ export const Detail: FunctionComponent = () => {
 
     const getFreightEntry = useCallback(() => {
         apiObjects.freightController
-            .getFreightUsingGET({id: params.id as unknown as number})
+            .getFreight({id: params.id as unknown as number})
             .then(setFreight);
     }, [apiObjects, params.id]);
 

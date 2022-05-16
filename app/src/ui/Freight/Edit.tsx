@@ -21,10 +21,10 @@ export const Edit: FunctionComponent = () => {
         if (validate()) {
             params.id
                 ? apiObjects.freightController
-                    .updateFreightUsingPUT({id: params.id as unknown as number, dto: freight})
+                    .updateFreight({id: params.id as unknown as number, freightDto: freight})
                     .then(() => navigate(`/${config.contextPath}/overview`))
                 : apiObjects.freightController
-                    .createFreightUsingPOST({dto: freight})
+                    .createFreight({freightDto: freight})
                     .then(() => {
                         setFreight({});
                         setShowToast(true);
@@ -34,11 +34,11 @@ export const Edit: FunctionComponent = () => {
 
     const getFreightEntry = useCallback(() => {
         !!params.id && apiObjects.freightController
-            .getFreightUsingGET({id: params.id as unknown as number})
+            .getFreight({id: params.id as unknown as number})
             .then(setFreight);
     }, [apiObjects, params.id]);
 
-    const handleCloseToast = (event: React.SyntheticEvent<any> | Event, reason: SnackbarCloseReason) => {
+    const handleCloseToast = (_event: React.SyntheticEvent<any> | Event, reason: SnackbarCloseReason) => {
         if (reason === 'clickaway') {
             return;
         }
